@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+ * Author: Victor Gasior 3
+ * Date: 1/18/21
+ * File: Program.cs
+*/
+
+using System;
 
 namespace Hello_World_PA1
 {
