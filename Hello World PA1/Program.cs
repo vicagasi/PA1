@@ -12,9 +12,27 @@ namespace Hello_World_PA1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            Program p = new Program();
-            Console.ReadKey();
+            string userSelect = "null"; // Variable for users switch selection
+
+            while (true)
+            {
+                Console.WriteLine("Please Select an Action: ");
+                Console.WriteLine("(Q) Quit Program ");
+                while (true)
+                {
+                    userSelect = Console.ReadLine();
+                    if (userSelect != "q")
+                    {
+                        Console.WriteLine("Inccorrect Input, please try again.");
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
+
+            }
         }
     }
 }
