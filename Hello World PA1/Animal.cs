@@ -75,6 +75,8 @@ namespace Hello_World_PA1
         {
             return name;
         }
+
+
     }
 
     class Cat : Animal
@@ -92,10 +94,6 @@ namespace Hello_World_PA1
         // Inputs: string name, sound and breed, int age, double weight
         public Cat(string name, string sound, string breed, int age, double weight) : base(name, sound, age, weight)
         {
-            this.name = name;
-            this.sound = sound;
-            this.age = age;
-            this.weight = weight;
             this.breed = breed;
         }
 
@@ -103,18 +101,16 @@ namespace Hello_World_PA1
         // Result: Info about the animal is printed to the console
         public void PrintAnimal()
         {
-            Console.WriteLine("Name: " + name);
-            Console.WriteLine("Age: " + age + " years");
-            Console.WriteLine("Weight: " + weight + "lbs.");
-            Console.WriteLine("Sound: " + sound);
+            base.PrintAnimal();
             Console.WriteLine("Breed: " + breed);
         }
 
         //This function increases the animals age
         // Result: Animals age is increased by one year, with weight increase varying by animal children
-        public override void AgeUp()
+        public void AgeUp()
         {
-            age++; // Increase age by one year
+            base.AgeUp();
+            /* age++; // Increase age by one year
 
             if (age > 12 && weight > 7.0) // Once past a certain age animals grow old and feeble instead of stronger
                 weight = weight - 0.5;
@@ -125,7 +121,12 @@ namespace Hello_World_PA1
 
             // Console writing
             Console.WriteLine("It's " + name + "'s birthday!");
-            Console.WriteLine(name + " is now " + age + " years old, and they weigh " + weight + "lbs. ");
+            Console.WriteLine(name + " is now " + age + " years old, and they weigh " + weight + "lbs. "); */
+        }
+
+        public string GetName()
+        {
+            return base.GetName();
         }
     }
 }

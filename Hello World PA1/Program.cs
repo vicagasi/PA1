@@ -59,20 +59,15 @@ namespace Hello_World_PA1
                 }
                 else if (userSelect == "0") // List Animals
                 {
+                    Cat cat = new Cat();
                     foreach (Animal aAnimal in animals)
                     {
-                        
-                        Console.WriteLine(Animal.name);
+                        string name = cat.GetName();
+                        Console.WriteLine(name);
                     }
                 }
                 else if (userSelect == "1") // Create Animal
                 {
-                    // Animal Values
-                    string animalName = "Greg";
-                    string animalSound = "meow";
-                    int animalAge = 1;
-                    double animalWeight = 3.0;
-
                     // Animal Selection
                     Console.WriteLine("Please Select an Animal: ");
                     Console.WriteLine("(1) Cat ");
@@ -94,6 +89,25 @@ namespace Hello_World_PA1
                         }
                     }
 
+                    // Animal Values
+                    string animalName = "Greg";
+                    Console.WriteLine("Whats the animals name? ");
+                    animalName = Console.ReadLine();
+
+                    string animalSound = "meow";
+                    Console.WriteLine("Whats the animals sound? ");
+                    animalSound = Console.ReadLine();
+
+                    int animalAge = 1;
+                    Console.WriteLine("Whats the animals age? ");
+                    string tempAge = Console.ReadLine();
+                    animalAge = int.Parse(tempAge);
+
+                    double animalWeight = 3.0;
+                    Console.WriteLine("Whats the animals weight? ");
+                    string tempWeight = Console.ReadLine();
+                    animalWeight = double.Parse(tempWeight);
+
                     // Actually Creating the Animals
                     if (userSelect == "1")
                     {
@@ -101,7 +115,12 @@ namespace Hello_World_PA1
 
                         animals.Add(new Cat(animalName, animalSound, catBreed, animalAge, animalWeight));
                     }
-                        
+                } 
+                else if (userSelect == "2")
+                {
+                    Console.WriteLine("What animal would you like to display info for? ");
+                    string nameSelect = Console.ReadLine();
+
                 }
 
             }
