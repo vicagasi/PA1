@@ -51,77 +51,81 @@ namespace Hello_World_PA1
                     }
                 }
 
-                // Different Selection Options
-                if (userSelect == "q" || userSelect == "Q") // Program exit
+                switch (userSelect)
                 {
-                    Console.WriteLine("Exiting...");
-                    break;
-                }
-                else if (userSelect == "0") // List Animals
-                {
-                    Cat cat = new Cat();
-                    foreach (Animal aAnimal in animals)
-                    {
-                        string name = cat.GetName();
-                        Console.WriteLine(name);
-                    }
-                }
-                else if (userSelect == "1") // Create Animal
-                {
-                    // Animal Selection
-                    Console.WriteLine("Please Select an Animal: ");
-                    Console.WriteLine("(1) Cat ");
-                    Console.WriteLine("(2) Cassowary");
-                    Console.WriteLine("(3) Capybara");
+                    // Different Selection Options
+                    case "q" :
+                        Console.WriteLine("Exiting...");
+                        Environment.Exit(0);
+                        break;
 
-                    while (true)
-                    {
-                        userSelect = Console.ReadLine();
-
-                        // Makes sure user makes a valid input
-                        if (userSelect != "1" && userSelect != "2" && userSelect != "3")
+                    case "0" : // List Animals
+                        Cat cat = new Cat();
+                        foreach (Animal aAnimal in animals)
                         {
-                            Console.WriteLine("Inccorrect Input, please try again.");
+                            string name = cat.GetName();
+                            Console.WriteLine(name);
                         }
-                        else
+                        break;
+                        
+                    case "1" : // Create Animal
+                        // Animal Selection
+                        Console.WriteLine("Please Select an Animal: ");
+                        Console.WriteLine("(1) Cat ");
+                        Console.WriteLine("(2) Cassowary");
+                        Console.WriteLine("(3) Capybara");
+
+                        while (true)
                         {
-                            break;
+                            userSelect = Console.ReadLine();
+
+                            // Makes sure user makes a valid input
+                            if (userSelect != "1" && userSelect != "2" && userSelect != "3")
+                            {
+                                Console.WriteLine("Inccorrect Input, please try again.");
+                            }
+                            else
+                            {
+                                break;
+                            }
                         }
-                    }
 
-                    // Animal Values
-                    string animalName = "Greg";
-                    Console.WriteLine("Whats the animals name? ");
-                    animalName = Console.ReadLine();
+                        // Animal Values
+                        string animalName = "Greg";
+                        Console.WriteLine("Whats the animals name? ");
+                        animalName = Console.ReadLine();
 
-                    string animalSound = "meow";
-                    Console.WriteLine("Whats the animals sound? ");
-                    animalSound = Console.ReadLine();
+                        string animalSound = "meow";
+                        Console.WriteLine("Whats the animals sound? ");
+                        animalSound = Console.ReadLine();
 
-                    int animalAge = 1;
-                    Console.WriteLine("Whats the animals age? ");
-                    string tempAge = Console.ReadLine();
-                    animalAge = int.Parse(tempAge);
+                        int animalAge = 1;
+                        Console.WriteLine("Whats the animals age? ");
+                        string tempAge = Console.ReadLine();
+                        animalAge = int.Parse(tempAge);
 
-                    double animalWeight = 3.0;
-                    Console.WriteLine("Whats the animals weight? ");
-                    string tempWeight = Console.ReadLine();
-                    animalWeight = double.Parse(tempWeight);
+                        double animalWeight = 3.0;
+                        Console.WriteLine("Whats the animals weight? ");
+                        string tempWeight = Console.ReadLine();
+                        animalWeight = double.Parse(tempWeight);
+                        break;
 
-                    // Actually Creating the Animals
-                    if (userSelect == "1")
-                    {
-                        string catBreed = "Tabby"; // Select cat breed
+                        // Actually Creating the Animals
+                        if (userSelect == "1")
+                        {
+                            string catBreed = "Tabby"; // Select cat breed
 
-                        animals.Add(new Cat(animalName, animalSound, catBreed, animalAge, animalWeight));
-                    }
-                } 
-                else if (userSelect == "2")
-                {
-                    Console.WriteLine("What animal would you like to display info for? ");
-                    string nameSelect = Console.ReadLine();
+                            animals.Add(new Cat(animalName, animalSound, catBreed, animalAge, animalWeight));
+                        }
+                        break;
 
+                    case "2" :
+                        Console.WriteLine("What animal would you like to display info for? ");
+                        string nameSelect = Console.ReadLine();
+
+                        break;
                 }
+               
 
             }
         }
