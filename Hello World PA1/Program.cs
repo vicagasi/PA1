@@ -24,46 +24,42 @@ namespace Hello_World_PA1
             // List for all the animals
             List<Animal> animals = new List<Animal>();
 
-            string userSelect = "null"; // Variable for users switch selection
+            // Name selection string
+            string nameSelect = "null";
 
-            while (true)
+            string userSelect = "null"; // Variable for users switch selection
+            bool programRunning = true;
+
+            while (programRunning)
             {
                 Console.WriteLine("Please Select an Action: ");
                 Console.WriteLine("(0) List Animals ");
                 Console.WriteLine("(1) Create Animal ");
                 Console.WriteLine("(2) Display Animal Info ");
                 Console.WriteLine("(3) Make Animal Noise ");
-                Console.WriteLine("(4) Create Animal ");
-                Console.WriteLine("(5) Age Animal Up ");
+                Console.WriteLine("(4) Age Animal Up ");
                 Console.WriteLine("(Q) Quit ");
-                while (true)
-                {
-                    userSelect = Console.ReadLine();
 
-                    // Makes sure user makes a valid input
-                    if (userSelect != "q" && userSelect != "Q" && userSelect != "0" && userSelect != "1" && userSelect != "2" && userSelect != "3" && userSelect != "4" && userSelect != "5")
-                    {
-                        Console.WriteLine("Inccorrect Input, please try again.");
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
+                userSelect = Console.ReadLine();
 
+                bool correctInput = false; // Correct input check for several while statements
                 switch (userSelect)
                 {
+                    case null:
+                        Console.WriteLine("Inccorrect Input, please try again.");
+                        break;
+
                     // Different Selection Options
-                    case "q" :
+                    case "q": // Quit Program
                         Console.WriteLine("Exiting...");
+                        programRunning = false;
                         Environment.Exit(0);
                         break;
 
                     case "0" : // List Animals
-                        Cat cat = new Cat();
                         foreach (Animal aAnimal in animals)
                         {
-                            string name = cat.GetName();
+                            string name = aAnimal.GetName();
                             Console.WriteLine(name);
                         }
                         break;
@@ -75,7 +71,8 @@ namespace Hello_World_PA1
                         Console.WriteLine("(2) Cassowary");
                         Console.WriteLine("(3) Capybara");
 
-                        while (true)
+                        correctInput = false;
+                        while (!correctInput)
                         {
                             userSelect = Console.ReadLine();
 
@@ -86,7 +83,7 @@ namespace Hello_World_PA1
                             }
                             else
                             {
-                                break;
+                                correctInput = true;
                             }
                         }
 
@@ -108,20 +105,73 @@ namespace Hello_World_PA1
                         Console.WriteLine("Whats the animals weight? ");
                         string tempWeight = Console.ReadLine();
                         animalWeight = double.Parse(tempWeight);
-                        break;
 
                         // Actually Creating the Animals
                         if (userSelect == "1")
                         {
                             string catBreed = "Tabby"; // Select cat breed
+                            Console.WriteLine("Whats the cats breed? ");
+                            catBreed = Console.ReadLine();
 
                             animals.Add(new Cat(animalName, animalSound, catBreed, animalAge, animalWeight));
+                        }
+                        else if (userSelect == "2")
+                        {
+                            string featherColor = "Blue"; // Select feather color
+                            Console.WriteLine("Whats the Cassowary's feather color? ");
+                            featherColor = Console.ReadLine();
+
+                            animals.Add(new Cassowary(animalName, animalSound, featherColor, animalAge, animalWeight));
+                        }
+                        else if (userSelect == "3")
+                        {
+                            string shadeColor = "Black"; // Select shade color
+                            Console.WriteLine("Whats the Capybara's shade color? ");
+                            shadeColor = Console.ReadLine();
+
+                            animals.Add(new Capybara(animalName, animalSound, shadeColor, animalAge, animalWeight));
                         }
                         break;
 
                     case "2" :
                         Console.WriteLine("What animal would you like to display info for? ");
-                        string nameSelect = Console.ReadLine();
+                        nameSelect = Console.ReadLine();
+
+                        foreach (Animal aAnimal in animals)
+                        {
+                            string name = aAnimal.GetName();
+                            if (nameSelect == name)
+                                aAnimal.PrintAnimal();
+                             
+                        }
+
+                        break;
+
+                    case "3":
+                        Console.WriteLine("What animal would you like to make a noise for? ");
+                        nameSelect = Console.ReadLine();
+
+                        foreach (Animal aAnimal in animals)
+                        {
+                            string name = aAnimal.GetName();
+                            if (nameSelect == name)
+                                aAnimal.MakeNoise();
+
+                        }
+
+                        break;
+
+                    case "4":
+                        Console.WriteLine("What animal would you like to age up? ");
+                        nameSelect = Console.ReadLine();
+
+                        foreach (Animal aAnimal in animals)
+                        {
+                            string name = aAnimal.GetName();
+                            if (nameSelect == name)
+                                aAnimal.AgeUp();
+
+                        }
 
                         break;
                 }

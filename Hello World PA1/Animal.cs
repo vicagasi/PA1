@@ -38,7 +38,7 @@ namespace Hello_World_PA1
 
         //This functions prints details about the animal
         // Result: Info about the animal is printed to the console
-        public void PrintAnimal()
+        public virtual void PrintAnimal()
         {
             Console.WriteLine("Name: " + name);
             Console.WriteLine("Age: " + age + " years");
@@ -48,14 +48,14 @@ namespace Hello_World_PA1
 
         //This functions has the animal make a noise
         // Result: Animals noise is printed to the console
-       public void MakeNoise()
+       public virtual void MakeNoise()
         {
             Console.WriteLine(name + " says " + "\"" + sound + "\"");
         }
 
         //This function increases the animals age
         // Result: Animals age is increased by one year, with weight increase varying by animal children
-        public void AgeUp()
+        public virtual void AgeUp()
         {
             age++; // Increase age by one year
 
@@ -76,6 +76,10 @@ namespace Hello_World_PA1
             return name;
         }
 
+        public string GetSound()
+        {
+            return sound;
+        }
 
     }
 
@@ -99,34 +103,118 @@ namespace Hello_World_PA1
 
         //This functions prints details about the animal
         // Result: Info about the animal is printed to the console
-        public void PrintAnimal()
+        public override void PrintAnimal()
         {
             base.PrintAnimal();
             Console.WriteLine("Breed: " + breed);
         }
 
-        //This function increases the animals age
-        // Result: Animals age is increased by one year, with weight increase varying by animal children
-        public void AgeUp()
+        //This functions has the animal make a noise
+        // Result: Animals noise is printed to the console
+        public override void MakeNoise()
         {
-            base.AgeUp();
-            /* age++; // Increase age by one year
-
-            if (age > 12 && weight > 7.0) // Once past a certain age animals grow old and feeble instead of stronger
-                weight = weight - 0.5;
-            else if (weight > 10)
-                weight = weight + 0.5; // Fat cat weight gain
-            else
-                weight++; // Normal cat weight gain
-
-            // Console writing
-            Console.WriteLine("It's " + name + "'s birthday!");
-            Console.WriteLine(name + " is now " + age + " years old, and they weigh " + weight + "lbs. "); */
+            string noise = GetSound();
+            base.MakeNoise();
+            if (noise != "meow" && noise != "Meow" && noise != "purr" && noise != "Purr")
+                Console.WriteLine("Which is a strange noise for a cat, but whatever");
         }
 
-        public string GetName()
+        //This function increases the animals age
+        // Result: Prints line of text specific to animal
+        public override void AgeUp()
         {
-            return base.GetName();
+            string name = GetName();
+            base.AgeUp();
+            Console.WriteLine("For its birthday " + name + " got a fresh fish with catnip seasoning.");
+        }
+    }
+
+    class Cassowary: Animal
+    {
+        // Properties
+        private string featherColor;
+
+        // Default constructor for Cat
+        public Cassowary() : base()
+        {
+            featherColor = "Blue";
+        }
+
+        // Parameterized constructor for Cat
+        // Inputs: string name, sound and breed, int age, double weight
+        public Cassowary(string name, string sound, string featherColor, int age, double weight) : base(name, sound, age, weight)
+        {
+            this.featherColor = featherColor;
+        }
+
+        //This functions prints details about the animal
+        // Result: Info about the animal is printed to the console
+        public override void PrintAnimal()
+        {
+            base.PrintAnimal();
+            Console.WriteLine("Feather Color: " + featherColor);
+        }
+
+        //This functions has the animal make a noise
+        // Result: Animals noise is printed to the console
+        public override void MakeNoise()
+        {
+            string noise = GetSound();
+            string name = GetName();
+            Console.WriteLine(name + " chirps out a \"" + noise + "\".");
+        }
+
+        //This function increases the animals age
+        // Result: Prints line of text specific to animal
+        public override void AgeUp()
+        {
+            string name = GetName();
+            base.AgeUp();
+            Console.WriteLine("For its birthday " + name + " got a 10 pound jug of birdseed.");
+        }
+    }
+
+    class Capybara : Animal
+    {
+        // Properties
+        private string shadeColor;
+
+        // Default constructor for Cat
+        public Capybara() : base()
+        {
+            shadeColor = "Blue";
+        }
+
+        // Parameterized constructor for Cat
+        // Inputs: string name, sound and breed, int age, double weight
+        public Capybara(string name, string sound, string shadeColor, int age, double weight) : base(name, sound, age, weight)
+        {
+            this.shadeColor = shadeColor;
+        }
+
+        //This functions prints details about the animal
+        // Result: Info about the animal is printed to the console
+        public override void PrintAnimal()
+        {
+            string name = GetName();
+            base.PrintAnimal();
+            Console.WriteLine( name + " is wearing a slick pair of " + shadeColor + " shades.");
+        }
+
+        public override void MakeNoise()
+        {
+            string name = GetName();
+            Console.WriteLine(name + " dosen't make any noise, because its fast asleep.");
+        }
+
+        //This function increases the animals age
+        // Result: Prints line of text specific to animal
+        public override void AgeUp()
+        {
+            string name = GetName();
+            base.AgeUp();
+            Console.WriteLine("For its birthday " + name + " got another slick pair of " + shadeColor + " shades. ");
         }
     }
 }
+
